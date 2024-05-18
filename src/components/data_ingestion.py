@@ -3,6 +3,7 @@ import sys
 from src.exception import CustomException
 from src.logger import logging
 from src.components.data_transformation import DataTransformation
+from src.components.model_trainer import ModelTrainer
 from dataclasses import dataclass
 
 import pandas as pd
@@ -51,3 +52,6 @@ if __name__  == '__main__':
 
     data_transformation = DataTransformation()
     tansformed_train_data, transformed_test_data, _ = data_transformation.initiate_data_transformation(train_data,test_data)
+
+    modeltrainer=ModelTrainer()
+    best_r2_score = modeltrainer.model_trainer(tansformed_train_data, transformed_test_data)
